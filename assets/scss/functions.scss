@@ -1,0 +1,33 @@
+@function breakpoint-max($name, $bp: $breakpoints) {
+    $next: breakpoint-next($name, $bp);
+
+    @return if($next, breakpoint-min($next, $bp) - 0.02, null);
+}
+
+@function breakpoint-min($name, $bp: $breakpoints) {
+    $min: map-get($bp, $name);
+
+    @return if($min != 0, $min, null);
+}
+
+@function breakpoint-next($name, $bp: $breakpoints, $breakpoint-names: map-keys($bp)) {
+    $n: index($breakpoint-names, $name);
+
+    @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function map-deep-get($map, $keys...) {
+    $scope: $map;
+    $i: 1;
+
+    @while type-of($scope) == map and $i <= length($keys) {
+        $scope: map-get($scope, nth($keys, $i));
+        $i: $i + 1;
+    }
+
+    @return $scope;
+}
+
+@function get-color($keys...) {
+    @return map-deep-get($tokens, 'Colors', $keys...);
+}

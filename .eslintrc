@@ -1,0 +1,42 @@
+{
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "sourceType": "module"
+    },
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "@nuxt/eslint-config",
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended",
+        "prettier"
+    ],
+    "plugins": ["simple-import-sort", "import", "prettier"],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js"],
+                "paths": ["./src"]
+            }
+        }
+    },
+    "rules": {
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "prettier/prettier": {
+            "htmlWhitespaceSensitivity": "strict",
+          },
+        "block-closing-brace-empty-line-before": "never",
+        "rule-empty-line-before": "never",
+        "vue/require-default-prop": "off",
+        "vue/multi-word-component-names": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"],
+    }
+}

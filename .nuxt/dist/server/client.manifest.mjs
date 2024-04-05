@@ -1,0 +1,1 @@
+export { default } from "file:///D:/OSPanel/domains/localhost/nutrionica/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
